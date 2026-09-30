@@ -1,65 +1,48 @@
-# EventHub Registration - Playwright Automation
+EventHub Registration - Playwright Automation
 
-This is a Playwright automation project I created to practice and demonstrate UI test automation using **Playwright with TypeScript**.
+This project contains automated tests for the registration page of the EventHub application.
 
-The project focuses on the EventHub registration page and covers both valid and invalid registration scenarios.
+I built this project using Playwright and TypeScript to practice UI automation and cover some common registration validation scenarios.
 
-## What I Tested
+Test Scenarios
 
-I created test cases for:
+The current test suite covers:
 
-- Valid registration
-- Invalid email format
-- Password less than 8 characters
-- Password without an uppercase letter
-- Password without a number
-- Password without a special character
-- Password and confirm password mismatch
-
-## Tools & Technologies
-
-- Playwright
-- TypeScript
-- Node.js
-- Git
-- Page Object Model (POM)
-
-## Project Structure
-
-```text
+Successful registration
+Invalid email
+Password less than 8 characters
+Password without uppercase letter
+Password without number
+Password without special character
+Password and confirm password mismatch
+Tools
+Playwright
+TypeScript
+Node.js
+Git
+Page Object Model (POM)
+Project Structure
 qa-portfolio/
-│
 ├── pages/
 │   └── RegistrationPage.ts
-│
 ├── test-data/
 │   └── registrationData.ts
-│
 ├── tests/
 │   └── registration.spec.ts
-│
 ├── playwright.config.ts
 ├── package.json
 └── README.md
+Test Setup
 
-How I Structured the Tests
+I used a separate page class for the registration page. It contains the locators and actions used by the tests.
 
-I used Page Object Model (POM) to keep the page locators and reusable actions separate from the test cases.
+Test data is also kept in a separate file so I can change the input values without changing the test cases.
 
-For example, the registration page contains the locators and actions for:
+The test file contains the actual scenarios and assertions.
 
-Email
-Password
-Confirm password
-Create Account button
+Run the Tests
 
-The test file focuses mainly on the test scenarios and assertions.
-
-I also kept the test data in a separate file so that the test data can be changed without modifying the main test logic.
-
-Running the Tests
-
-Install the project dependencies:
+Install dependencies:
 
 npm install
 
@@ -67,15 +50,15 @@ Run the registration tests:
 
 npx playwright test tests/registration.spec.ts --project=chromium
 
-To open the Playwright HTML report:
+Open the HTML report:
 
 npx playwright show-report
 Test Result
 
-7/7 tests passed on Chromium ✅
+7 out of 7 tests passed on Chromium.
 
-Application Under Test
+Application
 
-EventHub Registration
+EventHub Registration:
 
 https://eventhub.rahulshettyacademy.com/register
