@@ -1,27 +1,32 @@
-EventHub Registration - Playwright Automation
+# EventHub Registration - Playwright Automation
 
-This is a Playwright automation project I created to practice and demonstrate UI test automation using Playwright with TypeScript.
+This is a Playwright automation project I created to practice and demonstrate UI test automation using **Playwright with TypeScript**.
 
 The project focuses on the EventHub registration page and covers both valid and invalid registration scenarios.
 
-What I Tested
+## What I Tested
 
 I created test cases for:
 
-Valid registration
-Invalid email format
-Password less than 8 characters
-Password without an uppercase letter
-Password without a number
-Password without a special character
-Password and confirm password mismatch
-Tools & Technologies
-Playwright
-TypeScript
-Node.js
-Git
-Page Object Model (POM)
-Project Structure
+- Valid registration
+- Invalid email format
+- Password less than 8 characters
+- Password without an uppercase letter
+- Password without a number
+- Password without a special character
+- Password and confirm password mismatch
+
+## Tools & Technologies
+
+- Playwright
+- TypeScript
+- Node.js
+- Git
+- Page Object Model (POM)
+
+## Project Structure
+
+```text
 qa-portfolio/
 │
 ├── pages/
@@ -36,6 +41,7 @@ qa-portfolio/
 ├── playwright.config.ts
 ├── package.json
 └── README.md
+
 How I Structured the Tests
 
 I used Page Object Model (POM) to keep the page locators and reusable actions separate from the test cases.
@@ -66,9 +72,7 @@ To open the Playwright HTML report:
 npx playwright show-report
 Test Result
 
-Current test execution:
-
-7/7 tests passed on Chromium
+7/7 tests passed on Chromium ✅
 
 Application Under Test
 
