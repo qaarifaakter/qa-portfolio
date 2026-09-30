@@ -1,27 +1,32 @@
-EventHub Registration - Playwright Automation
+# EventHub Registration - Playwright Automation
 
 This project contains automated tests for the registration page of the EventHub application.
 
 I built this project using Playwright and TypeScript to practice UI automation and cover some common registration validation scenarios.
 
-Test Scenarios
+## Test Scenarios
 
 The current test suite covers:
 
-Successful registration
-Invalid email
-Password less than 8 characters
-Password without uppercase letter
-Password without number
-Password without special character
-Password and confirm password mismatch
-Tools
-Playwright
-TypeScript
-Node.js
-Git
-Page Object Model (POM)
-Project Structure
+* Successful registration
+* Invalid email
+* Password less than 8 characters
+* Password without uppercase letter
+* Password without number
+* Password without special character
+* Password and confirm password mismatch
+
+## Tools
+
+* Playwright
+* TypeScript
+* Node.js
+* Git
+* Page Object Model (POM)
+
+## Project Structure
+
+```text
 qa-portfolio/
 ├── pages/
 │   └── RegistrationPage.ts
@@ -32,7 +37,9 @@ qa-portfolio/
 ├── playwright.config.ts
 ├── package.json
 └── README.md
-Test Setup
+```
+
+## Test Setup
 
 I used a separate page class for the registration page. It contains the locators and actions used by the tests.
 
@@ -40,24 +47,31 @@ Test data is also kept in a separate file so I can change the input values witho
 
 The test file contains the actual scenarios and assertions.
 
-Run the Tests
+## Run the Tests
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Run the registration tests:
 
+```bash
 npx playwright test tests/registration.spec.ts --project=chromium
+```
 
 Open the HTML report:
 
+```bash
 npx playwright show-report
-Test Result
+```
+
+## Test Result
 
 7 out of 7 tests passed on Chromium.
 
-Application
+## Application
 
 EventHub Registration:
 
