@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "89e3f147-c6ba-4b57-ac38-f7c2a91e2702",
+		"name": "API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31705813",
+		"_collection_link": "https://arifa-akter-akhis-team.postman.co/workspace/arifa-akter-akhi's-Team's-Works~ce1ae210-f310-4d90-892c-af435251b718/collection/31705813-89e3f147-c6ba-4b57-ac38-f7c2a91e2702?action=share&source=collection_link&creator=31705813"
+	},
+	"item": [
+		{
+			"name": "GET - Single User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response contains user data\", function () {",
+							"    const response = pm.response.json();",
+							"    const user = response.data[0];",
+							"",
+							"    pm.expect(user).to.have.property(\"id\");",
+							"    pm.expect(user).to.have.property(\"email\");",
+							"    pm.expect(user).to.have.property(\"first_name\");",
+							"    pm.expect(user).to.have.property(\"last_name\");",
+							"});",
+							"",
+							"pm.test(\"User ID is valid\", function () {",
+							"    const response = pm.response.json();",
+							"    const users = response.data;",
+							"",
+							"    pm.expect(users).to.be.an(\"array\");",
+							"    pm.expect(users[0].id).to.be.a(\"number\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "reqres.in/api/users?page=2",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Non Existing User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/9999",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Created user data is correct\", function () {",
+							"    const response = pm.response.json();",
+							"",
+							"    pm.expect(response.name).to.eql(\"Arifa\");",
+							"    pm.expect(response.job).to.eql(\"QA Engineer\");",
+							"});",
+							"",
+							"pm.test(\"Response contains generated ID\", function () {",
+							"    const response = pm.response.json();",
+							"",
+							"    pm.expect(response.id).to.exist;",
+							"    pm.expect(response.createdAt).to.exist;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Arifa\",\n  \"job\": \"QA Engineer\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Updated user data is correct\", function () {",
+							"    const response = pm.response.json();",
+							"",
+							"    pm.expect(response.name).to.eql(\"Arifa Akter\");",
+							"    pm.expect(response.job).to.eql(\"Senior QA Engineer\");",
+							"});",
+							"",
+							"pm.test(\"Response contains updatedAt\", function () {",
+							"    const response = pm.response.json();",
+							"",
+							"    pm.expect(response.updatedAt).to.exist;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Arifa Akter\",\n  \"job\": \"Senior QA Engineer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
